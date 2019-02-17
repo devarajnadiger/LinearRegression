@@ -31,7 +31,7 @@ def grad_des(X,Y,theta,a,itrns,m):
         h=hyp(X,theta)
         #print(h)
         loss=h-Y
-        grad=np.sum(X.dot(loss))/m
+        grad=X.dot(loss)/m
         cost=cost_fun(X,Y,theta,m)
         theta=theta-a*grad
         cost_count[i]=cost #storing every iterated value of cost function to plot graph

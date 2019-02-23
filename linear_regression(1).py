@@ -42,6 +42,7 @@ def grad_des(X,Y,theta,a,itrns,m):
 def main():
     data=pd.read_csv('my_data.csv') #reading csv file
     x1=data["sr"].values
+    x1=(x1-np.mean(x1))/(max(x1)-min(x1))
     y=data["amp"].values 
    
     m=len(y)

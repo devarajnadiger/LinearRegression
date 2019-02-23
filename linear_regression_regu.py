@@ -61,7 +61,11 @@ def grad_des(X,Y,theta,a,itrns,m,theta_len,L):
 def main():
     data=pd.read_csv('channing.csv') #reading csv file
     x1=data["entry"].values
+    x1=(x1-np.mean(x1))/(max(x1)-min(x1))
+    x1d=x1
     x2=data["exit"].values
+    x2d=x2
+    x2=(x2-np.mean(x2))/(max(x2)-min(x2))
     y=data["time"].values 
     m=len(x1)
     x0=np.ones(m)
@@ -78,8 +82,8 @@ def main():
     
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.scatter(x1, x2, y, c='r')
-    ax.scatter(x1, x2, H, c='b')
+    ax.scatter(x1d, x2d, y, c='r')
+    ax.scatter(x1d, x2d, H, c='b')
     ax.set_xlabel('x1 feature')
     ax.set_ylabel('x2 feature')
     ax.set_zlabel('initial predicted(blue) vs actual(red) output')
@@ -118,8 +122,8 @@ def main():
     
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.scatter(x1, x2, y, c='r')
-    ax.scatter(x1, x2, pr, c='b')
+    ax.scatter(x1d, x2d, y, c='r')
+    ax.scatter(x1d, x2d, pr, c='b')
     ax.set_xlabel('x1 feature')
     ax.set_ylabel('x2 feature')
     ax.set_zlabel('predicted(blue) vs actual(red) output')
